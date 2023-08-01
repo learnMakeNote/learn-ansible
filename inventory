@@ -1,3 +1,10 @@
-azureuser@52.188.208.218
-azureuser@52.188.209.225
-azureuser@52.188.208.196
+[web_servers]
+azureuser@20.228.147.137
+azureuser@20.228.147.115
+
+[db_servers]
+azureuser@20.231.9.99
+
+[file_servers]
+azureuser@20.228.147.143
+
