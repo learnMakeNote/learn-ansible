@@ -2,6 +2,7 @@
 
 1. run
    - `ansible-playbook install_apache.yml`
+   - `ansible-playbook site.yml`
 2. debug
    - `ansible all -m gather_facts --limit 52.188.208.196 | grep ansible_distribution`
 3. show tags
