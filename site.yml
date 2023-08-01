@@ -1,4 +1,5 @@
 ---
+# 1. update apt and yum
 - hosts: all
   become: true
   pre_tasks:
@@ -16,6 +17,24 @@
         update_cache: yes
       when: ansible_distribution == "Ubuntu"
 
+# 1.1 install terraform
+- hosts: workstations
+  become: true
+  tasks:
+    - name: install unzip
+      package:
+        name: unzip
+
+    - name: install terraform
+      unarchive:
+        src: https://releases.hashicorp.com/terraform/1.5.4/terraform_1.5.4_linux_386.zip
+        dest: /usr/local/bin
+        remote_src: yes
+        mode: 0755
+        owner: root
+        group: root
+
+# 2. install web server, copy local html page to web server
 - hosts: web_servers
   become: true
   tasks:
@@ -46,8 +65,7 @@
         group: root
         mode: 0664
 
-
-
+# 3. install mysql server
 - hosts: db_servers
   become: true
   tasks:
@@ -67,6 +85,7 @@
         state: latest
       when: ansible_distribution in ["Debian", "Ubuntu"]
 
+# 4. install file server
 - hosts: file_servers
   become: true
   tasks:

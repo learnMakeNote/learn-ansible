@@ -8,3 +8,5 @@ azureuser@20.231.9.99
 [file_servers]
 azureuser@20.228.147.143
 
+[workstations]
+azureuser@20.228.147.143
